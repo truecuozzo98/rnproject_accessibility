@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RNProject</string>
+    <string name="accessibility_service_label">RNProject</string>
+    <string name="accessibility_service_description">RNProject</string>
+</resources>
