@@ -309,7 +309,6 @@ function Api4() {
 }
 
 function Api5() {
-  //AccessibilityService.show('Awesome', AccessibilityService.SHORT);
   const [label, setLabel] = useState("label")
   const [bellHasFocus, setBellFocus] = useState(false)
 
@@ -340,7 +339,7 @@ function Api5() {
 
   return(
     <>
-      <View accessibilityLabel='view1'>
+      <View>
         <Image
           accessible={true} 
           accessibilityLabel='bell'
@@ -348,7 +347,7 @@ function Api5() {
           style={styles.fork} />
       </View>
 
-      <View accessibilityLabel='view2' style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.multipleText}>
             <Text accessible={true} accessibilityLabel='name' style={styles.api} >Name of view with focus: </Text>
             <Text accessible={true} accessibilityLabel='label' style={styles.api} >{label}</Text>

@@ -28,8 +28,8 @@ import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
   private static ReactApplicationContext reactContext;
 
-  private static final String DURATION_SHORT_KEY = "SHORT";
-  private static final String DURATION_LONG_KEY = "LONG";
+  /*private static final String DURATION_SHORT_KEY = "SHORT";
+  private static final String DURATION_LONG_KEY = "LONG";*/
 
   AccessibilityServiceModule(ReactApplicationContext context) {
     super(context);
@@ -41,13 +41,13 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
     return "AccessibilityService";
   }
 
-  @Override
+  /*@Override
   public Map<String, Object> getConstants() {
     final Map<String, Object> constants = new HashMap<>();
     constants.put(DURATION_SHORT_KEY, Toast.LENGTH_SHORT);
     constants.put(DURATION_LONG_KEY, Toast.LENGTH_LONG);
     return constants;
-  }
+  }*/
 
   private static void sendEvent(ReactContext reactContext,
                                 String eventName,
@@ -81,7 +81,6 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
     View v2 = findViewByContentDescription(to);
     Log.d("focusTAG", "v1: " + v1);
     Log.d("focusTAG", "v2: " + v2);
-
 
     if(v1 != null && v2 != null) {
       int id = View.generateViewId();
