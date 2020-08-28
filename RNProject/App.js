@@ -389,20 +389,22 @@ function Api7() {
   return(
     <View style={{flex: 1, justifyContent: 'center', marginHorizontal: 10}}>
       <View>
-        <Text style={styles.api} accessibilityLabel={value1 === '' ? 'Textfield 1 Description' : value1}>Textfield 1 Description</Text>
+        <Text style={styles.api} >Textfield 1 Description</Text>
         <TextInput
+          accessibilityLabel={value1 === '' ? 'Textfield 1 Description' : value1}
           style={styles.textInput}
           onChangeText={text => onChangeText1(text)}
-          value={value1}
+          //value={value1}
         />
       </View>
 
       <View>
-        <Text style={styles.api} accessibilityLabel={'Textfield 2 Description '.concat(value2)}>Textfield 2 Description</Text>
+        <Text style={styles.api}>Textfield 2 Description</Text>
         <TextInput
-          style={styles.textInput}
-          onChangeText={text => onChangeText2(text)}
-          value={value2}
+            accessibilityLabel={value1 === '' ? 'Textfield 2 Description' : 'Textfield 2 Description'.concat(value2)}
+            style={styles.textInput}
+            onChangeText={text => onChangeText2(text) }
+          //value={value2}
         />
       </View>
     </View>
@@ -410,8 +412,6 @@ function Api7() {
 }
 
 function Api8() {
-  //const label = 'Textfield Description'
-
   let eventEmitterListener = useRef(null);
  
   useEffect(() => {
