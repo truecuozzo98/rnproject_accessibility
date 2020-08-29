@@ -432,7 +432,6 @@ function Api7() {
                                 console.log("else")
                                 AccessibilityService.defineTextToAnnounce("inputText1", text)
                             }*/
-                        
                     }
                     value={value1}
                 />
