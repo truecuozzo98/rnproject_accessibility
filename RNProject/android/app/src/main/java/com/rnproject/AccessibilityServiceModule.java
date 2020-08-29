@@ -1,12 +1,15 @@
 package com.rnproject;
 
 import android.app.Activity;
+import android.os.Build;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.react.bridge.NativeModule;
@@ -103,6 +106,41 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
       public void run() {
         v.performAccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, null);
       }
+    });
+  }
+
+  @ReactMethod
+  public void defineTextToAnnounce(String id, String label) {
+    Log.d("focusTAG", "id: " + id);
+    Log.d("focusTAG", "label: " + label);
+    View view = findViewByContentDescription(id);
+
+    assert view != null;
+    view.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+      @Override
+      public void onInitializeAccessibilityNodeInfo(View v, AccessibilityNodeInfo info) {
+        super.onInitializeAccessibilityNodeInfo(v, info);
+        Log.d("focusTAG", "view: " + v);
+        Log.d("focusTAG", "info: " + info);
+        info.setText(label);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+          info.setInputType(InputType.TYPE_CLASS_TEXT);
+        }
+        EditText et = (EditText) view;
+        et.setEnabled(true);
+      }
+
+      /*@Override
+      public void onPopulateAccessibilityEvent(View host, AccessibilityEvent event) {
+        super.onPopulateAccessibilityEvent(host, event);
+        event.getText().add(label);
+      }*/
+
+      /*@Override
+      public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event) {
+        super.onInitializeAccessibilityEvent(host, event);
+      }*/
+
     });
   }
 
