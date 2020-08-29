@@ -27,12 +27,10 @@ public class MyAccessibilityService extends AccessibilityService {
         if (source == null) {
             return;
         }
-        //Log.d("focusTAG", "accessibilityEvent: " + accessibilityEvent.toString());
 
         if(source.getContentDescription() != null && accessibilityEvent.getEventType() == TYPE_VIEW_ACCESSIBILITY_FOCUSED){
             AccessibilityServiceModule.prepareEvent(String.valueOf(source.getContentDescription()));
         }
-        //AccessibilityServiceModule.prepareEvent(accessibilityEvent.toString());
     }
 
     @Override

@@ -394,7 +394,10 @@ function Api7() {
         eventEmitterListener.current = eventEmitter.addListener(
             'viewLabel',
             event => {
-                console.log("value1", value1)
+                setEditable(true)
+
+                //AccessibilityService.defineTextToAnnounce("inputText1", (value1 == "") ? "Textfield 1 Description" : value1)
+                /*console.log("value1", value1)
                 if (value1 == "") {
                     console.log("if")
                     AccessibilityService.defineTextToAnnounce("inputText1", "Textfield 1 Description")
@@ -404,7 +407,7 @@ function Api7() {
                 }
 
                 setEditable(true)
-                console.log(editable)
+                console.log(editable)*/
 
             },
         );
@@ -442,6 +445,7 @@ function Api7() {
                 <TextInput
                     accessibilityLabel={"inputText2"}
                     style={styles.textInput}
+                    editable={editable}
                     onChangeText={text => {
                             onChangeText2(text)
                             if (text == "") {
@@ -451,6 +455,9 @@ function Api7() {
                                 console.log("else")
                                 AccessibilityService.defineTextToAnnounce("inputText2", "Textfield 2 Description " + text)
                             }
+
+                        setEditable(true)
+                        console.log(editable)
                         }
                     }
                     
