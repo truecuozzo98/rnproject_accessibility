@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 import React, { useState, useEffect, useRef } from "react";
 import { View, Text, Image, StyleSheet, Button, TouchableWithoutFeedback, TouchableOpacity, Alert, TextInput, findNodeHandle, AccessibilityInfo, Switch } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,8 +8,6 @@ import Slider from '@react-native-community/slider';
 import Sound from 'react-native-sound';
 import FocusOrder from './FocusOrder';
 import AccessibilityFocus from './AccessibilityFocus';
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Picker } from '@react-native-community/picker';
 import AccessibilityService from './AccessibilityService';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 
@@ -23,23 +19,23 @@ function HomeScreen({ navigation }) {
                 <Text accessibilityRole='header' style={styles.header}>Accessibility Focus</Text>
                 <View>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api1') }}>
-                        <Text style={[styles.api, styles.greenText]}>Specify which views should receive the accessibility focus</Text>
+                        <Text style={styles.api}>Specify which views should receive the accessibility focus</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api2') }}>
-                        <Text style={[styles.api, styles.greenText]}>Specify the accessibility focus order</Text>
+                        <Text style={styles.api}>Specify the accessibility focus order</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api3') }}>
-                        <Text style={[styles.api, styles.greenText]}>Assign the accessibility focus to a view</Text>
+                        <Text style={styles.api}>Assign the accessibility focus to a view</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api4') }}>
-                        <Text style={[styles.api, styles.greenText]}>Specify actions associated to accessibility focus-related events (e.g., a view acquires or loses the focus)</Text>
+                        <Text style={styles.api}>Specify actions associated to accessibility focus-related events (e.g., a view acquires or loses the focus)</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api5') }}>
-                        <Text style={[styles.api, styles.greenText]}>Determine whether a view has the accessibility focus or which view has the accessibility focus</Text>
+                        <Text style={styles.api}>Determine whether a view has the accessibility focus or which view has the accessibility focus</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -48,23 +44,29 @@ function HomeScreen({ navigation }) {
                 <Text accessibilityRole='header' style={styles.header}>Text to Announce</Text>
                 <View>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api6') }}>
-                        <Text style={[styles.api, styles.greenText]}>Specify attributes that contribute to form the text-to-announce</Text>
+                        <Text style={styles.api}>Specify attributes that contribute to form the text-to-announce</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api7') }}>
-                        <Text style={[styles.api, styles.greenText]}>Programmatically define the text-to-announce</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api8') }}>
-                        <Text style={[styles.api, styles.greenText]}>Use one view to describe another one</Text>
+                        <Text style={styles.api}>Use one view to describe another one</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api9') }}>
-                        <Text style={[styles.api, styles.greenText]}>Specify that a view should be announced when changed, even without user interaction</Text>
+                        <Text style={styles.api}>Specify that a view should be announced when changed, even without user interaction</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api10') }}>
-                        <Text style={styles.api}>Specify in which language the text-to-announce should be read</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -73,31 +75,43 @@ function HomeScreen({ navigation }) {
                 <Text accessibilityRole='header' style={styles.header}>Explicit TTS</Text>
                 <View>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api11') }}>
-                        <Text style={[styles.api, styles.greenText]}>Read a text with the screen-reader TTS</Text>
+                        <Text style={styles.api}>Read a text with the screen-reader TTS</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api12') }}>
-                        <Text style={styles.api}>Be informed when the screen-reader finishes reading an explicitly provided text</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api13') }}>
-                        <Text style={styles.api}>Customize screen-reader TTS speech features, like pitch, speed, etc...</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api14') }}>
-                        <Text style={[styles.api, styles.greenText]}>Read a text with non-screen-reader TTS (also works when screen-reader is not active)</Text>
+                        <Text style={styles.api}>Read a text with non-screen-reader TTS (also works when screen-reader is not active)</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api15') }}>
-                        <Text style={[styles.api]}>Detect whether the non-screen-reader TTS is reading</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api16') }}>
-                        <Text style={styles.api}>Pause the non-screen-reader TTS</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api17') }}>
-                        <Text style={[styles.api, styles.greenText]}>Customize non-screen-reader TTS speech features, like pitch, speed, etc...</Text>
+                        <Text style={styles.api}>Customize non-screen-reader TTS speech features, like pitch, speed, etc...</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -106,15 +120,18 @@ function HomeScreen({ navigation }) {
                 <Text accessibilityRole='header' style={styles.header}>Accessibility Tree</Text>
                 <View>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api18') }}>
-                        <Text style={[styles.api, styles.greenText]}>Aggregate multiple views into a single accessible element</Text>
+                        <Text style={styles.api}>Aggregate multiple views into a single accessible element</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api19') }}>
-                        <Text style={styles.api}>Decompose a view into multiple accessibility elements</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api20') }}>
-                        <Text style={[styles.api, styles.greenText]}>Get the parent accessible element</Text>
+                        <Text style={styles.api}>Get the parent accessible element</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -123,23 +140,26 @@ function HomeScreen({ navigation }) {
                 <Text accessibilityRole='header' style={styles.header}>Miscellaneous</Text>
                 <View>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api21') }}>
-                        <Text style={[styles.api, styles.greenText]}>Detect whether screen-reader is active</Text>
+                        <Text style={styles.api}>Detect whether screen-reader is active</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api22') }}>
-                        <Text style={[styles.api, styles.greenText]}>Support navigation by specifying which views are headers or panes</Text>
+                        <Text style={styles.api}>Support navigation by specifying which views are headers or panes</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api23') }}>
-                        <Text style={[styles.api, styles.greenText]}>Define how to respond to user actions that are only available when the screen reader is active</Text>
+                        <Text style={styles.api}>Define how to respond to user actions that are only available when the screen reader is active</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api24') }}>
-                        <Text style={[styles.api, styles.greenText]}>Perform actions on user behalf</Text>
+                        <Text style={styles.api}>Perform actions on user behalf</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api25') }}>
-                        <Text style={[styles.api]}>Associate arbitrary accessibility-related information to a view</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                        <View style={{ flex: 1, flexDirection: 'column' }}>
+                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.platform}>Not available on this platform</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -382,124 +402,6 @@ function Api6() {
     )
 }
 
-function Api7() {
-    const [value1, onChangeText1] = useState('')
-    const [value2, onChangeText2] = useState('')
-    const [editable, setEditable] = useState(true)
-
-    let eventEmitterListener = useRef(null);
-
-    useEffect(() => {
-        const eventEmitter = new NativeEventEmitter(AccessibilityService);
-        eventEmitterListener.current = eventEmitter.addListener(
-            'viewLabel',
-            event => {
-                setEditable(true)
-
-                //AccessibilityService.defineTextToAnnounce("inputText1", (value1 == "") ? "Textfield 1 Description" : value1)
-                /*console.log("value1", value1)
-                if (value1 == "") {
-                    console.log("if")
-                    AccessibilityService.defineTextToAnnounce("inputText1", "Textfield 1 Description")
-                } else {
-                    console.log("else")
-                    AccessibilityService.defineTextToAnnounce("inputText1", "Textfield 1 Description " + value1)
-                }
-
-                setEditable(true)
-                console.log(editable)*/
-
-            },
-        );
-
-        return () => {
-            eventEmitterListener.current.remove();
-        };
-    }, []);
-
-    //AccessibilityService.defineTextToAnnounce("inputText1", (value1 == "") ? "Textfield 1 Description" : value1)
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 10 }}>
-            <View>
-                <Text accessibilityLabel="Textfield 1 Description" style={styles.api} >Textfield 1 Description</Text>
-                <TextInput
-                    accessibilityLabel="inputText1"
-                    style={styles.textInput}
-                    editable={editable}
-                    onChangeText={text => 
-                            onChangeText1(text)
-                            /*if (text == "") {
-                                console.log("if")
-                                AccessibilityService.defineTextToAnnounce("inputText1", "Textfield 1 Description")
-                            } else {
-                                console.log("else")
-                                AccessibilityService.defineTextToAnnounce("inputText1", text)
-                            }*/
-                    }
-                    value={value1}
-                />
-            </View>
-
-            <View>
-                <Text accessibilityLabel="Textfield 2 Description" style={styles.api}>Textfield 2 Description</Text>
-                <TextInput
-                    accessibilityLabel={"inputText2"}
-                    style={styles.textInput}
-                    editable={editable}
-                    onChangeText={text => {
-                            onChangeText2(text)
-                            if (text == "") {
-                                console.log("if")
-                                AccessibilityService.defineTextToAnnounce("inputText2", "Textfield 2 Description")
-                            } else {
-                                console.log("else")
-                                AccessibilityService.defineTextToAnnounce("inputText2", "Textfield 2 Description " + text)
-                            }
-
-                        setEditable(true)
-                        console.log(editable)
-                        }
-                    }
-                    
-                        
-                    value={value2}
-                />
-            </View>
-        </View>
-    )
-}
-
-/*
-function Api7() {
-    const [value1, onChangeText1] = useState('')
-    const [value2, onChangeText2] = useState('')
-
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 10 }}>
-            <View>
-                <Text style={styles.api} >Textfield 1 Description</Text>
-                <TextInput
-                    accessibilityLabel={value1 === '' ? 'Textfield 1 Description' : value1}
-                    style={styles.textInput}
-                    onChangeText={text => onChangeText1(text)}
-                //value={value1}
-                />
-            </View>
-
-            <View>
-                <Text style={styles.api}>Textfield 2 Description</Text>
-                <TextInput
-                    accessibilityLabel={value1 === '' ? 'Textfield 2 Description' : 'Textfield 2 Description'.concat(value2)}
-                    style={styles.textInput}
-                    onChangeText={text => onChangeText2(text)}
-                //value={value2}
-                />
-            </View>
-        </View>
-    )
-}
-*/
-
 function Api8() {
     let eventEmitterListener = useRef(null);
 
@@ -525,17 +427,6 @@ function Api8() {
     )
 }
 
-/*function Api8() {
-  const label = 'Textfield Description'
-
-  return(
-    <View style={{flex: 1, justifyContent: 'center', marginHorizontal: 20}}>
-      <Text style={styles.api, {alignSelf: 'center', marginBottom: 20}}>{label}</Text>
-      <TextInput style={styles.textInput} accessibilityLabel={label}/>
-    </View>
-  )
-}*/
-
 function Api9() {
     const [counter, setCounter] = useState(0)
 
@@ -546,14 +437,6 @@ function Api9() {
                 <Button title='increment' style={styles.button} onPress={() => { setCounter(counter + 1) }} />
             </View>
         </View>
-    )
-}
-
-function Api10() {
-    return (
-        <>
-            <Text>10</Text>
-        </>
     )
 }
 
@@ -568,22 +451,6 @@ function Api11() {
     )
 }
 
-function Api12() {
-    return (
-        <>
-            <Text>12</Text>
-        </>
-    )
-}
-
-function Api13() {
-    return (
-        <>
-            <Text>13</Text>
-        </>
-    )
-}
-
 function Api14() {
     const textTTS = 'Text1: This is text number one'
 
@@ -594,58 +461,6 @@ function Api14() {
                 <Button title='Read text1 with screen reader off' style={styles.button} onPress={() => Tts.speak(textTTS)} />
             </View>
         </View>
-    )
-}
-
-function Api15() {
-    return (
-        <>
-            <Text>15</Text>
-        </>
-    )
-}
-
-/*function Api15() {
-  const textTTS1 = 'Text1: This is text number one'
-  const textTTS2 = 'Text2: This is text number two'
-
-  function interrupt(text) {
-      Speech.isSpeakingAsync().then((successMessage) => {
-        console.log(successMessage)
-        if (successMessage) {
-          Speech.stop()
-        } 
-        Speech.speak(text)
-      })
-  }
-
-  return(
-    <>
-      <View style={styles.container}>
-        <View>
-          <Text>{textTTS1}</Text>
-          <View>
-            <Button title='Read text1 with screen reader off' style={styles.button} onPress={() => Speech.speak(textTTS1) } />
-          </View>
-        </View>
-
-        <View style={{marginTop: 50}}>
-          <Text>{textTTS2}</Text>
-          <View>
-            <Button title='Read text 2' style={styles.button} onPress={() => {interrupt(textTTS2)} } />
-            <Button title='Read text 2 without overlap' style={styles.button} onPress={() => Speech.speak(textTTS2) } />
-          </View>
-        </View>   
-      </View>
-    </>
-  )
-}*/
-
-function Api16() {
-    return (
-        <>
-            <Text>16</Text>
-        </>
     )
 }
 
@@ -688,14 +503,6 @@ function Api18() {
                 <Text>This three different texts (views) have been grouped together, and will be seen as a single element.</Text>
             </View>
         </View>
-    )
-}
-
-function Api19() {
-    return (
-        <>
-            <Text>19</Text>
-        </>
     )
 }
 
@@ -783,7 +590,6 @@ function Api23() {
                 { name: 'activate', label: 'activate' },
                 { name: 'increment', label: 'increment' },
                 { name: 'decrement', label: 'decrement' },
-                //{ name: 'longpress', label: 'longpress' }
             ]}
             onAccessibilityAction={(event) => action(event)}
 
@@ -792,7 +598,6 @@ function Api23() {
 
             <Text>Change background color with one of the following actions with the screen reader:</Text>
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'activate'  - Double tap with the screen reader.</Text>
-            {/* <Text style={{marginTop: 10, marginLeft: 10}}>'longpress' - Double tap and holds one finger on the screen.</Text> */}
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'increment' - Press the volume up button.</Text>
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'decrement' - Press the volume down button.</Text>
             <Text style={{ marginTop: 100, fontSize: 25 }}>Action performed: {value}</Text>
@@ -827,17 +632,6 @@ function Api24() {
     )
 }
 
-function Api25() {
-    const [forkLabel, setForkLabel] = useState('fork')
-
-    return (
-        <View style={{ justifyContent: 'center', marginHorizontal: 30 }}>
-            <Image accessible={true} accessibilityLabel={forkLabel} source={require('./img/fork.png')} style={styles.fork} />
-            <Button title='get more info' style={styles.button} onPress={() => setForkLabel("metal fork")} />
-        </View>
-    )
-}
-
 const Stack = createStackNavigator()
 
 function App() {
@@ -851,25 +645,17 @@ function App() {
                 <Stack.Screen name="Api4" component={Api4} />
                 <Stack.Screen name="Api5" component={Api5} />
                 <Stack.Screen name="Api6" component={Api6} />
-                <Stack.Screen name="Api7" component={Api7} />
                 <Stack.Screen name="Api8" component={Api8} />
                 <Stack.Screen name="Api9" component={Api9} />
-                <Stack.Screen name="Api10" component={Api10} />
                 <Stack.Screen name="Api11" component={Api11} />
-                <Stack.Screen name="Api12" component={Api12} />
-                <Stack.Screen name="Api13" component={Api13} />
                 <Stack.Screen name="Api14" component={Api14} />
-                <Stack.Screen name="Api15" component={Api15} />
-                <Stack.Screen name="Api16" component={Api16} />
                 <Stack.Screen name="Api17" component={Api17} />
                 <Stack.Screen name="Api18" component={Api18} />
-                <Stack.Screen name="Api19" component={Api19} />
                 <Stack.Screen name="Api20" component={Api20} />
                 <Stack.Screen name="Api21" component={Api21} />
                 <Stack.Screen name="Api22" component={Api22} />
                 <Stack.Screen name="Api23" component={Api23} />
                 <Stack.Screen name="Api24" component={Api24} />
-                <Stack.Screen name="Api25" component={Api25} />
             </Stack.Navigator>
         </NavigationContainer>
     )
@@ -889,6 +675,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     api: {
+        margin: 5,
+        paddingHorizontal: 5,
+    },
+    not_aviable: {
+        margin: 5,
+        paddingHorizontal: 5,
+        textDecorationLine: 'line-through',
+        color: 'grey',
+    },
+    platform: {
+        alignSelf: 'flex-end',
+        color: 'grey',
         margin: 5,
         paddingHorizontal: 5,
     },
@@ -915,9 +713,6 @@ const styles = StyleSheet.create({
         height: 150,
         alignSelf: 'center',
         margin: 10,
-    },
-    greenText: {
-        color: 'green'
     },
     counter: {
         fontSize: 50,
@@ -956,12 +751,6 @@ const styles = StyleSheet.create({
         right: 20,
         bottom: 20
     },
-
-
-
-
-
-
     textInput: {
         height: 40,
         margin: 10,
@@ -979,11 +768,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 20,
     },
-    subtitle: {
-        fontSize: 20,
-        marginTop: 10
-    },
-
     multipleText: {
         marginBottom: 10,
         flexDirection: 'row',
