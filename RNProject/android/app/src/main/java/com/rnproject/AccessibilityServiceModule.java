@@ -60,7 +60,6 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
     View v1 = findViewByContentDescription(from);
     View v2 = findViewByContentDescription(to);
 
-
     if(v1 != null && v2 != null) {
       int id = View.generateViewId();
       v2.setId(id);

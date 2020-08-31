@@ -64,7 +64,7 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Specify in which language the text-to-annouce should be read</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                     </TouchableOpacity>
@@ -80,14 +80,14 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Be informed when the screen-reader finishes reading an explicitly provided text.</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Customize screen-reader TTS speech features, like pitch, speed, etc...</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                         <View style={styles.line} />
@@ -98,14 +98,14 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Detect whether the non-screen-reader TTS is reading</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Pause the non-screen-reader TTS</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                         <View style={styles.line} />
@@ -125,7 +125,7 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Decompose a view into multiple accessibility elements</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                         <View style={styles.line} />
@@ -157,7 +157,7 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>Programmatically define the text-to-announce</Text>
+                            <Text style={styles.not_aviable}>Associate arbitrary accessibility-related information to a view</Text>
                             <Text style={styles.platform}>Not available on this platform</Text>
                         </View>
                     </TouchableOpacity>
@@ -663,11 +663,12 @@ function App() {
 
 export default App
 
-
 const styles = StyleSheet.create({
     line: {
-        borderBottomWidth: StyleSheet.hairlineWidth,
         marginHorizontal: 10,
+        marginVertical: 1,
+        zIndex: 200,
+        borderBottomWidth: StyleSheet.hairlineWidth,
     },
     header: {
         fontSize: 20,
