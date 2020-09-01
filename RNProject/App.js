@@ -509,7 +509,7 @@ function Api18() {
 function Api20() {
     return (
         <View accessible={true} accessibilityLabel="parentView" style={styles.container}>
-            <Button accessible={true} accessibilityLabel='button' title='set focus to parent' style={styles.button} onPress={() => { AccessibilityService.setFocusToParentView('button') }} />
+            <Button accessible={true} accessibilityLabel='set focus to parent' title='set focus to parent' style={styles.button} onPress={() => { AccessibilityService.setFocusToParentView('set focus to parent') }} />
         </View>
     )
 }
