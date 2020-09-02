@@ -1,8 +1,10 @@
 package com.rnproject;
 
 import android.app.Activity;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -11,8 +13,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.uimanager.UIManagerModule;
 
 import java.util.ArrayList;
 
@@ -44,6 +48,28 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
     WritableMap params = Arguments.createMap();
     params.putString("viewLabel", label);
     sendEvent(reactContext, "viewLabel", params);
+  }
+
+  @ReactMethod
+  public void viewLabelFocused() {
+    final Activity activity = getCurrentActivity();
+    assert activity != null;
+    final View rootView = activity.getWindow().getDecorView();
+
+    rootView.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+      @Override
+      public boolean onRequestSendAccessibilityEvent(ViewGroup viewGroup, View child, AccessibilityEvent event) {
+        if (event.getEventType() == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
+          View v = findAccessibilityFocus(rootView);
+          if(v != null && v.getContentDescription() != null) {
+            WritableMap params = Arguments.createMap();
+            params.putString("viewLabel", (String) v.getContentDescription());
+            sendEvent(reactContext, "viewLabel", params);
+          }
+        }
+        return super.onRequestSendAccessibilityEvent(viewGroup, child, event);
+      }
+    });
   }
 
   @ReactMethod
@@ -94,4 +120,27 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
 
     return results.get(0);
   }
+
+  public static View findAccessibilityFocus(View view) {
+    if (view == null) {
+      return view;
+    }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      if (view.isAccessibilityFocused()) {
+        return view;
+      }
+    }
+
+    if (view instanceof ViewGroup) {
+      ViewGroup viewGroup = (ViewGroup)view;
+      for (int i = 0; i < viewGroup.getChildCount(); i++) {
+        View childView = viewGroup.getChildAt(i);
+        View result = findAccessibilityFocus(childView);
+        if (result != null) return result;
+      }
+    }
+    return null;
+  }
 }
+

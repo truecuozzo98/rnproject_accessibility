@@ -215,6 +215,7 @@ function Api2() {
     const ref3 = React.useRef()
     const ref4 = React.useRef()
 
+    console.log("ref1", ref1)
     function changeOrder() {
         if (topDown) {
             setTopDown(false)
@@ -331,20 +332,17 @@ function Api4() {
 function Api5() {
     const [label, setLabel] = useState("label")
     const [bellHasFocus, setBellFocus] = useState(false)
+                    AccessibilityService.viewLabelFocused()
 
     let eventEmitterListener = useRef(null);
-
     useEffect(() => {
         const eventEmitter = new NativeEventEmitter(AccessibilityService);
         eventEmitterListener.current = eventEmitter.addListener(
             'viewLabel',
             event => {
-                const label = event['viewLabel']
-                console.log('event', event);
-
+                const label = event.viewLabel
                 setLabel(label)
-
-                if (label == 'bell') {
+                if (label == "bell") {
                     setBellFocus(true)
                 } else {
                     setBellFocus(false)
