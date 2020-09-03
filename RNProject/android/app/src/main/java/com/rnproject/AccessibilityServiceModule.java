@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.UIManagerModule;
@@ -44,12 +45,6 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
         .emit(eventName, params);
   }
 
-  public static void prepareEvent(String label) {
-    WritableMap params = Arguments.createMap();
-    params.putString("viewLabel", label);
-    sendEvent(reactContext, "viewLabel", params);
-  }
-
   @ReactMethod
   public void viewLabelFocused() {
     final Activity activity = getCurrentActivity();
@@ -61,9 +56,10 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
       public boolean onRequestSendAccessibilityEvent(ViewGroup viewGroup, View child, AccessibilityEvent event) {
         if (event.getEventType() == AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED) {
           View v = findAccessibilityFocus(rootView);
-          if(v != null && v.getContentDescription() != null) {
+          if(v != null) {
+            String label = (v.getContentDescription() == null) ? "" : (String) v.getContentDescription();
             WritableMap params = Arguments.createMap();
-            params.putString("viewLabel", (String) v.getContentDescription());
+            params.putString("viewLabel", label);
             sendEvent(reactContext, "viewLabel", params);
           }
         }
@@ -73,18 +69,14 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void setFocusToParentView(String id) {
-    View v = findViewByContentDescription(id);
-    if (v != null) {
-      View parent = (View) v.getParentForAccessibility();
-      parent.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+  public void setLabelFor(Double from, Double to) {
+    if(from == null || to == null) {
+      return;
     }
-  }
 
-  @ReactMethod
-  public void setLabelFor(String from, String to) {
-    View v1 = findViewByContentDescription(from);
-    View v2 = findViewByContentDescription(to);
+    final UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
+    View v1 = uiManager.resolveView(from.intValue());
+    View v2 = uiManager.resolveView(to.intValue());
 
     if(v1 != null && v2 != null) {
       int id = View.generateViewId();
@@ -94,8 +86,21 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void performAction(String id) {
-    View v = findViewByContentDescription(id);
+  public void setFocusToParentView(Double id) {
+    final UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
+    View v = uiManager.resolveView(id.intValue());
+
+    if (v != null) {
+      View parent = (View) v.getParentForAccessibility();
+      parent.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED);
+    }
+  }
+
+  @ReactMethod
+  public void performAction(Double id) {
+    final UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
+    View v = uiManager.resolveView(id.intValue());
+
     if (v == null) {
       return;
     }
@@ -106,19 +111,6 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
         v.performAccessibilityAction(AccessibilityNodeInfo.ACTION_CLICK, null);
       }
     });
-  }
-
-  private View findViewByContentDescription(String desc) {
-    final Activity activity = getCurrentActivity();
-    assert activity != null;
-    final View decor = activity.getWindow().getDecorView();
-    ArrayList<View> results = new ArrayList<>();
-    decor.findViewsWithText(results, desc, View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
-    if (results.size() == 0) {
-      return null;
-    }
-
-    return results.get(0);
   }
 
   public static View findAccessibilityFocus(View view) {

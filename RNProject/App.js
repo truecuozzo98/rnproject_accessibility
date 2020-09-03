@@ -236,7 +236,6 @@ function Api2() {
                 findNodeHandle(ref4.current)
             ])
         }
-
     }
 
     return (
@@ -402,26 +401,17 @@ function Api6() {
 }
 
 function Api8() {
-    let eventEmitterListener = useRef(null);
+    const ref1 = React.useRef()
+    const ref2 = React.useRef()
 
     useEffect(() => {
-        const eventEmitter = new NativeEventEmitter(AccessibilityService);
-        eventEmitterListener.current = eventEmitter.addListener(
-            'viewLabel',
-            event => {
-                AccessibilityService.setLabelFor("Textfield Description", "textInput")
-            },
-        );
-
-        return () => {
-            eventEmitterListener.current.remove();
-        };
-    }, []);
+        AccessibilityService.setLabelFor(findNodeHandle(ref1.current), findNodeHandle(ref2.current))
+    })
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 20 }}>
-            <Text accessibility={true} accessibilityLabel="Textfield Description" style={styles.api, { alignSelf: 'center', marginBottom: 20 }}>Textfield Description</Text>
-            <TextInput accessibility={true} accessibilityLabel="textInput" style={styles.textInput} />
+            <Text accessibility={true} accessibilityLabel="Textfield Description" ref={ref1} style={styles.api, { alignSelf: 'center', marginBottom: 20 }}>Textfield Description</Text>
+            <TextInput accessibility={true} accessibilityLabel="textInput" ref={ref2} style={styles.textInput} />
         </View>
     )
 }
@@ -506,9 +496,11 @@ function Api18() {
 }
 
 function Api20() {
+    const ref = React.useRef()
+
     return (
         <View accessible={true} accessibilityLabel="parentView" style={styles.container}>
-            <Button accessible={true} accessibilityLabel='set focus to parent' title='set focus to parent' style={styles.button} onPress={() => { AccessibilityService.setFocusToParentView('set focus to parent') }} />
+            <Button accessible={true} ref={ref} title='set focus to parent' style={styles.button} onPress={() => { AccessibilityService.setFocusToParentView(findNodeHandle(ref.current)) }} />
         </View>
     )
 }
@@ -606,6 +598,8 @@ function Api23() {
 
 function Api24() {
     const [visibility, setVisibility] = useState('none')
+    const ref = React.useRef()
+
     function changeVisibility() {
         if (visibility == 'none') {
             setVisibility('flex')
@@ -619,10 +613,10 @@ function Api24() {
             <View style={styles.container}>
                 <View>
                     <View>
-                        <Button accessible={true} accessibilityLabel='b1' title='click button 1' style={styles.button, { marginTop: 10 }} onPress={() => { AccessibilityService.performAction('b2') }} />
+                        <Button accessible={true} title='click button 1' style={styles.button, { marginTop: 10 }} onPress={() => { AccessibilityService.performAction(findNodeHandle(ref.current)) }} />
                     </View>
                     <View style={{ marginTop: 50 }}>
-                        <Button accessible={true} accessibilityLabel='b2' title='button 1' style={styles.button} onPress={() => changeVisibility()} />
+                        <Button accessible={true} ref={ref} title='button 1' style={styles.button} onPress={() => changeVisibility()} />
                         <Text accessible={true} style={styles.api, { display: visibility, marginTop: 10 }}>Button 1 clicked</Text>
                     </View>
                 </View>
