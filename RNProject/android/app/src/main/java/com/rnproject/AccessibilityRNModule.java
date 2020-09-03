@@ -23,17 +23,17 @@ import java.util.ArrayList;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
-public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
+public class AccessibilityRNModule extends ReactContextBaseJavaModule {
   private static ReactApplicationContext reactContext;
 
-  AccessibilityServiceModule(ReactApplicationContext context) {
+  AccessibilityRNModule(ReactApplicationContext context) {
     super(context);
     reactContext = context;
   }
 
   @Override
   public String getName() {
-    return "AccessibilityService";
+    return "AccessibilityRN";
   }
 
   private static void sendEvent(ReactContext reactContext,
@@ -97,7 +97,7 @@ public class AccessibilityServiceModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void performAction(Double id) {
+  public void performAccessibilityAction(Double id) {
     final UIManagerModule uiManager = reactContext.getNativeModule(UIManagerModule.class);
     View v = uiManager.resolveView(id.intValue());
 

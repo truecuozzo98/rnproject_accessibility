@@ -8,7 +8,7 @@ import Slider from '@react-native-community/slider';
 import Sound from 'react-native-sound';
 import FocusOrder from './FocusOrder';
 import AccessibilityFocus from './AccessibilityFocus';
-import AccessibilityService from './AccessibilityService';
+import AccessibilityRN from './AccessibilityRN';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 
 
@@ -215,7 +215,6 @@ function Api2() {
     const ref3 = React.useRef()
     const ref4 = React.useRef()
 
-    console.log("ref1", ref1)
     function changeOrder() {
         if (topDown) {
             setTopDown(false)
@@ -332,11 +331,11 @@ function Api5() {
     const [label, setLabel] = useState("label")
     const [bellHasFocus, setBellFocus] = useState(false)
 
-    AccessibilityService.viewLabelFocused()
+    AccessibilityRN.viewLabelFocused()
 
     let eventEmitterListener = useRef(null);
     useEffect(() => {
-        const eventEmitter = new NativeEventEmitter(AccessibilityService);
+        const eventEmitter = new NativeEventEmitter(AccessibilityRN);
         eventEmitterListener.current = eventEmitter.addListener(
             'viewLabel',
             event => {
@@ -367,11 +366,11 @@ function Api5() {
 
             <View style={styles.container}>
                 <View style={styles.multipleText}>
-                    <Text accessible={true} accessibilityLabel='name' style={styles.api} >Name of view with focus: </Text>
+                    <Text accessible={true} accessibilityLabel='Name of view with focus' style={styles.api} >Name of view with focus: </Text>
                     <Text accessible={true} accessibilityLabel='label' style={styles.api} >{label}</Text>
                 </View>
                 <View style={styles.multipleText}>
-                    <Text accessible={true} accessibilityLabel='has_focus' style={styles.api}>Does Bell Image have the focus?</Text>
+                    <Text accessible={true} accessibilityLabel='Does Bell Image have focus?' style={styles.api}>Does Bell Image have focus?</Text>
                     <Text accessible={true} accessibilityLabel='focus' style={styles.api, { fontSize: 20, color: bellHasFocus ? 'green' : 'red' }}>{bellHasFocus ? 'YES' : 'NO'}</Text>
                 </View>
             </View>
@@ -405,7 +404,7 @@ function Api8() {
     const ref2 = React.useRef()
 
     useEffect(() => {
-        AccessibilityService.setLabelFor(findNodeHandle(ref1.current), findNodeHandle(ref2.current))
+        AccessibilityRN.setLabelFor(findNodeHandle(ref1.current), findNodeHandle(ref2.current))
     })
 
     return (
@@ -500,7 +499,7 @@ function Api20() {
 
     return (
         <View accessible={true} accessibilityLabel="parentView" style={styles.container}>
-            <Button accessible={true} ref={ref} title='set focus to parent' style={styles.button} onPress={() => { AccessibilityService.setFocusToParentView(findNodeHandle(ref.current)) }} />
+            <Button accessible={true} ref={ref} title='set focus to parent' style={styles.button} onPress={() => { AccessibilityRN.setFocusToParentView(findNodeHandle(ref.current)) }} />
         </View>
     )
 }
@@ -613,7 +612,7 @@ function Api24() {
             <View style={styles.container}>
                 <View>
                     <View>
-                        <Button accessible={true} title='click button 1' style={styles.button, { marginTop: 10 }} onPress={() => { AccessibilityService.performAction(findNodeHandle(ref.current)) }} />
+                        <Button accessible={true} title='click button 1' style={styles.button, { marginTop: 10 }} onPress={() => { AccessibilityRN.performAccessibilityAction(findNodeHandle(ref.current)) }} />
                     </View>
                     <View style={{ marginTop: 50 }}>
                         <Button accessible={true} ref={ref} title='button 1' style={styles.button} onPress={() => changeVisibility()} />

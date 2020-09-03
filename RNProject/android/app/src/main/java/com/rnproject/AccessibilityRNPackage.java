@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AccessibilityServicePackage implements ReactPackage {
+public class AccessibilityRNPackage implements ReactPackage {
 
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
@@ -21,7 +21,7 @@ public class AccessibilityServicePackage implements ReactPackage {
                               ReactApplicationContext reactContext) {
     List<NativeModule> modules = new ArrayList<>();
 
-    modules.add(new AccessibilityServiceModule(reactContext));
+    modules.add(new AccessibilityRNModule(reactContext));
 
     return modules;
   }

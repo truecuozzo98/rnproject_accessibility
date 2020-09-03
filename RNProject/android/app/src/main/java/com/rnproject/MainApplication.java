@@ -11,7 +11,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import com.rnproject.AccessibilityServicePackage; 
+import com.rnproject.AccessibilityRNPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -30,7 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           packages.add(new FocusOrderPackage());
           packages.add(new ScreenReaderFocusPackage());
-          packages.add(new AccessibilityServicePackage());
+          packages.add(new AccessibilityRNPackage());
           return packages;
         }
 
