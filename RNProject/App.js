@@ -18,23 +18,23 @@ function HomeScreen({ navigation }) {
             <View>
                 <Text accessibilityRole='header' style={styles.header}>Accessibility Focus</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api1') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API1') }}>
                         <Text style={styles.api}>1. Specify which views should receive the accessibility focus</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api2') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API2') }}>
                         <Text style={styles.api}>2. Specify the accessibility focus order</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api3') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API3') }}>
                         <Text style={styles.api}>3. Assign the accessibility focus to a view</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api4') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API4') }}>
                         <Text style={styles.api}>4. Specify actions associated to accessibility focus-related events (e.g., a view acquires or loses the focus)</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api5') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API5') }}>
                         <Text style={styles.api}>5. Determine whether a view has the accessibility focus or which view has the accessibility focus</Text>
                     </TouchableOpacity>
                 </View>
@@ -43,7 +43,7 @@ function HomeScreen({ navigation }) {
             <View>
                 <Text accessibilityRole='header' style={styles.header}>Text to Announce</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api6') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API6') }}>
                         <Text style={styles.api}>6. Specify attributes that contribute to form the text-to-announce</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
@@ -54,11 +54,11 @@ function HomeScreen({ navigation }) {
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api8') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API8') }}>
                         <Text style={styles.api}>8. Use one view to describe another one</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api9') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API9') }}>
                         <Text style={styles.api}>9. Specify that a view should be announced when changed, even without user interaction</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
@@ -74,7 +74,7 @@ function HomeScreen({ navigation }) {
             <View>
                 <Text accessibilityRole='header' style={styles.header}>Explicit TTS</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api11') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API11') }}>
                         <Text style={styles.api}>11. Read a text with the screen-reader TTS</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
@@ -92,7 +92,7 @@ function HomeScreen({ navigation }) {
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api14') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API14') }}>
                         <Text style={styles.api}>14. Read a text with non-screen-reader TTS (also works when screen-reader is not active)</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
@@ -110,7 +110,7 @@ function HomeScreen({ navigation }) {
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api17') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API17') }}>
                         <Text style={styles.api}>17. Customize non-screen-reader TTS speech features, like pitch, speed, etc...</Text>
                     </TouchableOpacity>
                 </View>
@@ -119,7 +119,7 @@ function HomeScreen({ navigation }) {
             <View>
                 <Text accessibilityRole='header' style={styles.header}>Accessibility Tree</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api18') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API18') }}>
                         <Text style={styles.api}>18. Aggregate multiple views into a single accessible element</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
@@ -130,7 +130,7 @@ function HomeScreen({ navigation }) {
                         </View>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api20') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API20') }}>
                         <Text style={styles.api}>20. Get the parent accessible element</Text>
                     </TouchableOpacity>
                 </View>
@@ -139,20 +139,20 @@ function HomeScreen({ navigation }) {
             <View>
                 <Text accessibilityRole='header' style={styles.header}>Miscellaneous</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api21') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API21') }}>
                         <Text style={styles.api}>21. Detect whether screen-reader is active</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api22') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API22') }}>
                         <Text style={styles.api}>22. Support navigation by specifying which views are headers or panes</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api23') }}>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API23') }}>
                         <Text style={styles.api}>23. Define how to respond to user actions that are only available when the screen reader is active</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('Api24') }}>
-                        <Text style={styles.api}>24. Perform actions on user behalf</Text>
+                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API24') }}>
+                        <Text style={styles.api}>24. Perform actions on user's behalf</Text>
                         <View style={styles.line} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
@@ -167,17 +167,14 @@ function HomeScreen({ navigation }) {
     )
 }
 
-function Api1() {
+function API1() {
     const [accessible, setAccessible] = useState(true)
-    const [text, setText] = useState('Above Image Is Accessible')
 
     function setForkAccessibility() {
         if (accessible) {
             setAccessible(false)
-            setText('Above Image Is Not Accessible')
         } else {
             setAccessible(true)
-            setText('Above Image Is Accessible')
         }
     }
 
@@ -186,15 +183,16 @@ function Api1() {
             <View>
                 <Image
                     accessible={accessible}
-                    accessibilityLabel='this is the image of a fork'
+                    accessibilityLabel='image of a fork'
                     importantForAccessibility={accessible ? "yes" : "no-hide-descendants"}
                     source={require('./img/fork.png')}
                     style={styles.fork} />
             </View>
 
             <View style={styles.switch}>
-                <Text>{text}</Text>
+                <Text importantForAccessibility="no-hide-descendants" >Press the switch to change{"\n"}the accessibility of the image</Text>
                 <Switch
+                    accessibilityLabel={"Press the switch to change the accessibility of the image"}
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={accessible ? "#f5dd4b" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
@@ -206,7 +204,7 @@ function Api1() {
     )
 }
 
-function Api2() {
+function API2() {
     const [topDown, setTopDown] = useState(true)
     const [text, setText] = useState('CHANGE FOCUS ORDER TO LEFT-RIGHT')
 
@@ -257,11 +255,13 @@ function Api2() {
             <View style={styles.button}>
                 <Button title={text} onPress={() => changeOrder()} />
             </View>
+
+            <Text style={styles.footer}>i: Views 1, 2, 3 and 4 are displayed in such a way that reading them from top to bottom results in 1, 2, 3, 4, while reading them from left to right is: 1, 3, 2, 4.</Text>
         </>
     )
 }
 
-function Api3() {
+function API3() {
     const ref = React.useRef()
 
     const changeFocus = () => {
@@ -282,7 +282,7 @@ function Api3() {
     )
 }
 
-function Api4() {
+function API4() {
     const [hasFocus, setFocus] = useState(false)
 
     function playBeep(beep) {
@@ -322,14 +322,15 @@ function Api4() {
                 </TouchableOpacity>
             </AccessibilityFocus>
 
-            <Text style={styles.footer}>i: This image makes a sound when it receives focus and makes a different one when it loses it.</Text>
+            <Text style={styles.footer}>i: This image makes a sound when it receives focus and makes a different one when it loses it. If you don't hear the sound, check the system volume.</Text>
         </View>
     )
 }
 
-function Api5() {
+function API5() {
     const [label, setLabel] = useState("label")
     const [bellHasFocus, setBellFocus] = useState(false)
+    const [hasId, setHasId] = useState("normal")
 
     AccessibilityRN.viewLabelFocused()
 
@@ -340,7 +341,15 @@ function Api5() {
             'viewLabel',
             event => {
                 const label = event.viewLabel
-                setLabel(label)
+
+                if (label == "") {
+                    setLabel('this view has no id')
+                    setHasId("italic")
+                } else {
+                    setLabel(label)
+                    setHasId("normal")
+                }
+
                 if (label == "bell") {
                     setBellFocus(true)
                 } else {
@@ -367,10 +376,10 @@ function Api5() {
             <View style={styles.container}>
                 <View style={styles.multipleText}>
                     <Text accessible={true} accessibilityLabel='Name of view with focus' style={styles.api} >Name of view with focus: </Text>
-                    <Text accessible={true} accessibilityLabel='label' style={styles.api} >{label}</Text>
+                    <Text accessible={true} accessibilityLabel='label' style={ [styles.api, { fontStyle:  hasId }] } >{label}</Text>
                 </View>
                 <View style={styles.multipleText}>
-                    <Text accessible={true} accessibilityLabel='Does Bell Image have focus?' style={styles.api}>Does Bell Image have focus?</Text>
+                    <Text accessible={true} accessibilityLabel='Does bell image have focus?' style={styles.api}>Does bell image have focus?</Text>
                     <Text accessible={true} accessibilityLabel='focus' style={styles.api, { fontSize: 20, color: bellHasFocus ? 'green' : 'red' }}>{bellHasFocus ? 'YES' : 'NO'}</Text>
                 </View>
             </View>
@@ -378,7 +387,7 @@ function Api5() {
     )
 }
 
-function Api6() {
+function API6() {
     const [value, onChangeText] = useState('')
 
     return (
@@ -399,7 +408,7 @@ function Api6() {
     )
 }
 
-function Api8() {
+function API8() {
     const ref1 = React.useRef()
     const ref2 = React.useRef()
 
@@ -411,11 +420,13 @@ function Api8() {
         <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 20 }}>
             <Text accessibility={true} accessibilityLabel="Textfield Description" ref={ref1} style={styles.api, { alignSelf: 'center', marginBottom: 20 }}>Textfield Description</Text>
             <TextInput accessibility={true} accessibilityLabel="textInput" ref={ref2} style={styles.textInput} />
+
+            <Text style={styles.footer}>i: The textfield is described by the text above it.</Text>
         </View>
     )
 }
 
-function Api9() {
+function API9() {
     const [counter, setCounter] = useState(0)
 
     return (
@@ -428,18 +439,21 @@ function Api9() {
     )
 }
 
-function Api11() {
-    const text = "Touch on this text to read it with the screen reader.\nThe text to speech will be read by the screen reader."
+function API11() {
+    const text = "The text to speech will be read by the screen reader."
     return (
         <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 40 }}>
-            <TouchableWithoutFeedback onPress={() => AccessibilityInfo.announceForAccessibility(text)} >
+            <View>
                 <Text>{text}</Text>
-            </TouchableWithoutFeedback>
+            </View>
+            <View style={{ marginTop: 30 }}>
+                <Button title='Read the text above' style={styles.button} onPress={() => AccessibilityInfo.announceForAccessibility(text)} />
+            </View>
         </View>
     )
 }
 
-function Api14() {
+function API14() {
     const textTTS = 'Text1: This is text number one'
 
     return (
@@ -448,11 +462,12 @@ function Api14() {
             <View>
                 <Button title='Read text1 with screen reader off' style={styles.button} onPress={() => Tts.speak(textTTS)} />
             </View>
+            <Text style={styles.footer}>i: In case you don't hear the text read aloud, please check the system volume</Text>
         </View>
     )
 }
 
-function Api17() {
+function API17() {
     const textTTS = 'This is an example text.'
     const [rate, setrate] = useState(1)
     Tts.setDefaultRate(rate, true);
@@ -478,23 +493,24 @@ function Api17() {
                 />
                 <Text style={{ marginTop: 10 }}>FAST</Text>
             </View>
+            <Text style={styles.footer}>i: To use the slider, press the volume up and the volume down buttons.</Text>
         </View>
     )
 }
 
-function Api18() {
+function API18() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', marginHorizontal: 30 }}>
             <View accessible={true} style={{ alignItems: 'center', padding: 10 }}>
                 <Text style={{ marginBottom: 100 }}>View number 1</Text>
                 <Text style={{ marginBottom: 100 }}>View number 2</Text>
-                <Text>This three different texts (views) have been grouped together, and will be seen as a single element.</Text>
+                <Text>This three different texts (views) have been grouped together, and will be handled by talkback as a single element.</Text>
             </View>
         </View>
     )
 }
 
-function Api20() {
+function API20() {
     const ref = React.useRef()
 
     return (
@@ -504,7 +520,7 @@ function Api20() {
     )
 }
 
-function Api21() {
+function API21() {
     const [screenReaderEnabled, setScreenReaderEnabled] = useState(false)
 
     useEffect(() => {
@@ -535,7 +551,7 @@ function Api21() {
     )
 }
 
-function Api22() {
+function API22() {
     return (
         <View style={styles.container}>
             <Text accessibilityRole='header' style={styles.api} >This text is treated as a header</Text>
@@ -546,7 +562,7 @@ function Api22() {
     )
 }
 
-function Api23() {
+function API23() {
     const [value, setValue] = useState('')
     const [backgroundColor, setBackgroundColor] = useState('')
 
@@ -595,7 +611,7 @@ function Api23() {
     )
 }
 
-function Api24() {
+function API24() {
     const [visibility, setVisibility] = useState('none')
     const ref = React.useRef()
 
@@ -631,23 +647,23 @@ function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="HomeScreen">
                 <Stack.Screen name="HomeScreen" component={HomeScreen} />
-                <Stack.Screen name="Api1" component={Api1} />
-                <Stack.Screen name="Api2" component={Api2} />
-                <Stack.Screen name="Api3" component={Api3} />
-                <Stack.Screen name="Api4" component={Api4} />
-                <Stack.Screen name="Api5" component={Api5} />
-                <Stack.Screen name="Api6" component={Api6} />
-                <Stack.Screen name="Api8" component={Api8} />
-                <Stack.Screen name="Api9" component={Api9} />
-                <Stack.Screen name="Api11" component={Api11} />
-                <Stack.Screen name="Api14" component={Api14} />
-                <Stack.Screen name="Api17" component={Api17} />
-                <Stack.Screen name="Api18" component={Api18} />
-                <Stack.Screen name="Api20" component={Api20} />
-                <Stack.Screen name="Api21" component={Api21} />
-                <Stack.Screen name="Api22" component={Api22} />
-                <Stack.Screen name="Api23" component={Api23} />
-                <Stack.Screen name="Api24" component={Api24} />
+                <Stack.Screen name="API1" component={API1} />
+                <Stack.Screen name="API2" component={API2} />
+                <Stack.Screen name="API3" component={API3} />
+                <Stack.Screen name="API4" component={API4} />
+                <Stack.Screen name="API5" component={API5} />
+                <Stack.Screen name="API6" component={API6} />
+                <Stack.Screen name="API8" component={API8} />
+                <Stack.Screen name="API9" component={API9} />
+                <Stack.Screen name="API11" component={API11} />
+                <Stack.Screen name="API14" component={API14} />
+                <Stack.Screen name="API17" component={API17} />
+                <Stack.Screen name="API18" component={API18} />
+                <Stack.Screen name="API20" component={API20} />
+                <Stack.Screen name="API21" component={API21} />
+                <Stack.Screen name="API22" component={API22} />
+                <Stack.Screen name="API23" component={API23} />
+                <Stack.Screen name="API24" component={API24} />
             </Stack.Navigator>
         </NavigationContainer>
     )
