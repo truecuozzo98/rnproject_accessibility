@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Image, StyleSheet, Button, TouchableWithoutFeedback, TouchableOpacity, Alert, TextInput, findNodeHandle, AccessibilityInfo, Switch } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TextInput, findNodeHandle, AccessibilityInfo, Switch } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -195,7 +195,6 @@ function API1() {
                     accessibilityLabel={"Press the switch to change the accessibility of the image"}
                     trackColor={{ false: "#767577", true: "#81b0ff" }}
                     thumbColor={accessible ? "#f5dd4b" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e"
                     onValueChange={setForkAccessibility}
                     value={accessible}
                 />
@@ -271,9 +270,9 @@ function API3() {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity ref={ref} accessible={true} style={{ marginBottom: 20 }}>
+            <View ref={ref} accessible={true} style={{ marginBottom: 20 }}>
                 <Text>Generic view</Text>
-            </TouchableOpacity>
+            </View>
 
             <View style={styles.button}>
                 <Button title='assign focus to generic view' onPress={changeFocus} />
@@ -332,10 +331,11 @@ function API5() {
     const [bellHasFocus, setBellFocus] = useState(false)
     const [hasId, setHasId] = useState("normal")
 
-    AccessibilityRN.viewLabelFocused()
 
     let eventEmitterListener = useRef(null);
     useEffect(() => {
+        AccessibilityRN.viewLabelFocused()
+
         const eventEmitter = new NativeEventEmitter(AccessibilityRN);
         eventEmitterListener.current = eventEmitter.addListener(
             'viewLabel',
@@ -606,7 +606,7 @@ function API23() {
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'activate'  - Double tap with the screen reader.</Text>
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'increment' - Press the volume up button.</Text>
             <Text style={{ marginTop: 10, marginLeft: 10 }}>'decrement' - Press the volume down button.</Text>
-            <Text style={{ marginTop: 100, fontSize: 25 }}>Action performed: {value}</Text>
+            <Text accessibilityLiveRegion="polite" style={{ marginTop: 100, fontSize: 25 }}>Action performed: {value}</Text>
         </View>
     )
 }

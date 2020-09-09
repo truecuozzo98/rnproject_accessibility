@@ -13,13 +13,9 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReadableArray;
-import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.UIManagerModule;
-
-import java.util.ArrayList;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 
@@ -78,11 +74,13 @@ public class AccessibilityRNModule extends ReactContextBaseJavaModule {
     View v1 = uiManager.resolveView(from.intValue());
     View v2 = uiManager.resolveView(to.intValue());
 
-    if(v1 != null && v2 != null) {
-      int id = View.generateViewId();
-      v2.setId(id);
-      v1.setLabelFor(id);
+    if(v1 == null || v2 == null) {
+      return;
     }
+
+    int id = View.generateViewId();
+    v2.setId(id);
+    v1.setLabelFor(id);
   }
 
   @ReactMethod
@@ -125,14 +123,17 @@ public class AccessibilityRNModule extends ReactContextBaseJavaModule {
     }
 
     if (view instanceof ViewGroup) {
-      ViewGroup viewGroup = (ViewGroup)view;
+      ViewGroup viewGroup = (ViewGroup) view;
       for (int i = 0; i < viewGroup.getChildCount(); i++) {
         View childView = viewGroup.getChildAt(i);
         View result = findAccessibilityFocus(childView);
-        if (result != null) return result;
+
+        if (result != null) {
+          return result;
+        }
       }
     }
+
     return null;
   }
 }
-
