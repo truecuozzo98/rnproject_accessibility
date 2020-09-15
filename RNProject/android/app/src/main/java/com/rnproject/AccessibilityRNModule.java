@@ -35,7 +35,6 @@ public class AccessibilityRNModule extends ReactContextBaseJavaModule {
   private static void sendEvent(ReactContext reactContext,
                                 String eventName,
                                 WritableMap params) {
-    Log.d("focusTAG", "inside sendEvent");
     reactContext
         .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
         .emit(eventName, params);

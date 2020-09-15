@@ -12,7 +12,7 @@ import AccessibilityRN from './AccessibilityRN';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 
 
-function HomeScreen({ navigation }) {
+function AtShowcase({ navigation }) {
     return (
         <ScrollView>
             <View>
@@ -393,7 +393,11 @@ function API6() {
     return (
         <>
             <View accessible={true}>
-                <Image accessible={true} accessibilityLabel={value === '' ? 'This image has no description' : value} source={require('./img/fork.png')} style={styles.fork} />
+                <Image 
+                    accessible={true} 
+                    accessibilityLabel={value === '' ? 'This image has no description' : value} 
+                    source={require('./img/fork.png')} 
+                    style={styles.fork} />
             </View>
 
             <View style={{ marginHorizontal: 20 }}>
@@ -645,8 +649,8 @@ const Stack = createStackNavigator()
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="HomeScreen">
-                <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Navigator initialRouteName="AtShowcase">
+                <Stack.Screen name="AtShowcase" component={AtShowcase} />
                 <Stack.Screen name="API1" component={API1} />
                 <Stack.Screen name="API2" component={API2} />
                 <Stack.Screen name="API3" component={API3} />
