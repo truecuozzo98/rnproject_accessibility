@@ -681,17 +681,23 @@ function App() {
                                                     <Text>Developed by Antonio Pugliese{"\n"}Presso EveryWare Lab</Text>
                                                 </View>
 
-                                                <Text accessibilityRole='link' style={styles.modalText} style={{color: 'blue'}}
-                                                    onPress={() => Linking.openURL('https://everywarelab.di.unimi.it/15-research-projects/211-at-in-programming-languages')}>
-                                                    More info here
-                                                </Text>
-                      
+                                                <View style={{marginTop: 15}}>
+                                                    <Text accessibilityRole='link' style={styles.modalText} style={{color: 'blue'}}
+                                                        onPress={() => Linking.openURL('https://everywarelab.di.unimi.it/15-research-projects/211-at-in-programming-languages')}>
+                                                        More info here
+                                                    </Text>
+                                                </View>
 
-                                                <Button
-                                                    style={{ ...styles.button, backgroundColor: "#2196F3", marginTop: 10 }}
-                                                    onPress={() => { setModalVisible(!modalVisible) }}
-                                                    title='hide'
-                                                />
+                                                <View style={{flexDirection: 'row'}}>
+                                                    <View style={{width: '75%', marginTop: 20}}>
+                                                        <Button
+                                                            style={{ backgroundColor: "#2196F3", marginTop: 10 }}
+                                                            onPress={() => { setModalVisible(!modalVisible) }}
+                                                            title='hide'
+                                                        />
+                                                    </View>
+                                                </View>
+                                                
                                             </View>
                                         </View>
                                     </Modal>
