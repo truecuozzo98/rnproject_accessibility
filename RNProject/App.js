@@ -650,7 +650,20 @@ function App() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="AtShowcase">
-                <Stack.Screen name="AtShowcase" component={AtShowcase} />
+                <Stack.Screen
+                    name="AtShowcase"
+                    component={AtShowcase}
+                    options={{
+                        headerRight: () => (
+                            <View style={styles.about_container}>
+                                <TouchableOpacity style={styles.about_img} onPress={() => alert('This is a button!')}>
+                                    <Image resizeMode={'contain'}  source={require('./img/about.png')}  style={styles.img}/>
+                                </TouchableOpacity>  
+                            </View>
+                        ),
+                    }}
+                />
+
                 <Stack.Screen name="API1" component={API1} />
                 <Stack.Screen name="API2" component={API2} />
                 <Stack.Screen name="API3" component={API3} />
@@ -676,6 +689,17 @@ function App() {
 export default App
 
 const styles = StyleSheet.create({
+    about_container: {
+        flex: 1,
+        flexDirection: 'row',
+        alignContent: 'flex-start',
+        alignItems:'center',
+    },
+    about_img: {
+        width:'50%',
+        height: '50%',
+        marginRight: 20
+    },
     line: {
         marginHorizontal: 10,
         marginVertical: 1,
