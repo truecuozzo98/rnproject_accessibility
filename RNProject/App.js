@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TextInput, findNodeHandle, AccessibilityInfo, Switch } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TouchableOpacity, TextInput, findNodeHandle, AccessibilityInfo, Switch, Modal, TouchableHighlight, Linking } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -12,158 +12,162 @@ import AccessibilityRN from './AccessibilityRN';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 
 
+
 function AtShowcase({ navigation }) {
     return (
-        <ScrollView>
-            <View>
-                <Text accessibilityRole='header' style={styles.header}>Accessibility Focus</Text>
+        <>
+            
+            <ScrollView>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API1') }}>
-                        <Text style={styles.api}>1. Specify which views should receive the accessibility focus</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API2') }}>
-                        <Text style={styles.api}>2. Specify the accessibility focus order</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API3') }}>
-                        <Text style={styles.api}>3. Assign the accessibility focus to a view</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API4') }}>
-                        <Text style={styles.api}>4. Specify actions associated to accessibility focus-related events (e.g., a view acquires or loses the focus)</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API5') }}>
-                        <Text style={styles.api}>5. Determine whether a view has the accessibility focus or which view has the accessibility focus</Text>
-                    </TouchableOpacity>
+                    <Text accessibilityRole='header' style={styles.header}>Accessibility Focus</Text>
+                    <View>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API1') }}>
+                            <Text style={styles.api}>1. Specify which views should receive the accessibility focus</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API2') }}>
+                            <Text style={styles.api}>2. Specify the accessibility focus order</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API3') }}>
+                            <Text style={styles.api}>3. Assign the accessibility focus to a view</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API4') }}>
+                            <Text style={styles.api}>4. Specify actions associated to accessibility focus-related events (e.g., a view acquires or loses the focus)</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API5') }}>
+                            <Text style={styles.api}>5. Determine whether a view has the accessibility focus or which view has the accessibility focus</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            <View>
-                <Text accessibilityRole='header' style={styles.header}>Text to Announce</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API6') }}>
-                        <Text style={styles.api}>6. Specify attributes that contribute to form the text-to-announce</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>7. Programmatically define the text-to-announce</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API8') }}>
-                        <Text style={styles.api}>8. Use one view to describe another one</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API9') }}>
-                        <Text style={styles.api}>9. Specify that a view should be announced when changed, even without user interaction</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>10. Specify in which language the text-to-annouce should be read</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <Text accessibilityRole='header' style={styles.header}>Text to Announce</Text>
+                    <View>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API6') }}>
+                            <Text style={styles.api}>6. Specify attributes that contribute to form the text-to-announce</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>7. Programmatically define the text-to-announce</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API8') }}>
+                            <Text style={styles.api}>8. Use one view to describe another one</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API9') }}>
+                            <Text style={styles.api}>9. Specify that a view should be announced when changed, even without user interaction</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>10. Specify in which language the text-to-annouce should be read</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            <View>
-                <Text accessibilityRole='header' style={styles.header}>Explicit TTS</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API11') }}>
-                        <Text style={styles.api}>11. Read a text with the screen-reader TTS</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>12. Be informed when the screen-reader finishes reading an explicitly provided text.</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>13. Customize screen-reader TTS speech features, like pitch, speed, etc...</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API14') }}>
-                        <Text style={styles.api}>14. Read a text with non-screen-reader TTS (also works when screen-reader is not active)</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>15. Detect whether the non-screen-reader TTS is reading</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>16. Pause the non-screen-reader TTS</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API17') }}>
-                        <Text style={styles.api}>17. Customize non-screen-reader TTS speech features, like pitch, speed, etc...</Text>
-                    </TouchableOpacity>
+                    <Text accessibilityRole='header' style={styles.header}>Explicit TTS</Text>
+                    <View>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API11') }}>
+                            <Text style={styles.api}>11. Read a text with the screen-reader TTS</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>12. Be informed when the screen-reader finishes reading an explicitly provided text.</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>13. Customize screen-reader TTS speech features, like pitch, speed, etc...</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API14') }}>
+                            <Text style={styles.api}>14. Read a text with non-screen-reader TTS (also works when screen-reader is not active)</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>15. Detect whether the non-screen-reader TTS is reading</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>16. Pause the non-screen-reader TTS</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API17') }}>
+                            <Text style={styles.api}>17. Customize non-screen-reader TTS speech features, like pitch, speed, etc...</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            <View>
-                <Text accessibilityRole='header' style={styles.header}>Accessibility Tree</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API18') }}>
-                        <Text style={styles.api}>18. Aggregate multiple views into a single accessible element</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>19. Decompose a view into multiple accessibility elements</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API20') }}>
-                        <Text style={styles.api}>20. Get the parent accessible element</Text>
-                    </TouchableOpacity>
+                    <Text accessibilityRole='header' style={styles.header}>Accessibility Tree</Text>
+                    <View>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API18') }}>
+                            <Text style={styles.api}>18. Aggregate multiple views into a single accessible element</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>19. Decompose a view into multiple accessibility elements</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API20') }}>
+                            <Text style={styles.api}>20. Get the parent accessible element</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            <View>
-                <Text accessibilityRole='header' style={styles.header}>Miscellaneous</Text>
                 <View>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API21') }}>
-                        <Text style={styles.api}>21. Detect whether screen-reader is active</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API22') }}>
-                        <Text style={styles.api}>22. Support navigation by specifying which views are headers or panes</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API23') }}>
-                        <Text style={styles.api}>23. Define how to respond to user actions that are only available when the screen reader is active</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API24') }}>
-                        <Text style={styles.api}>24. Perform actions on user's behalf</Text>
-                        <View style={styles.line} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
-                        <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <Text style={styles.not_aviable}>25. Associate arbitrary accessibility-related information to a view</Text>
-                            <Text style={styles.platform}>Not available on this platform</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <Text accessibilityRole='header' style={styles.header}>Miscellaneous</Text>
+                    <View>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API21') }}>
+                            <Text style={styles.api}>21. Detect whether screen-reader is active</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API22') }}>
+                            <Text style={styles.api}>22. Support navigation by specifying which views are headers or panes</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API23') }}>
+                            <Text style={styles.api}>23. Define how to respond to user actions that are only available when the screen reader is active</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} onPress={() => { navigation.navigate('API24') }}>
+                            <Text style={styles.api}>24. Perform actions on user's behalf</Text>
+                            <View style={styles.line} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FFFFFF' }} accessible={true} >
+                            <View style={{ flex: 1, flexDirection: 'column' }}>
+                                <Text style={styles.not_aviable}>25. Associate arbitrary accessibility-related information to a view</Text>
+                                <Text style={styles.platform}>Not available on this platform</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </>
     )
 }
 
@@ -647,6 +651,8 @@ function API24() {
 const Stack = createStackNavigator()
 
 function App() {
+    const [modalVisible, setModalVisible] = useState(false)
+
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="AtShowcase">
@@ -656,14 +662,48 @@ function App() {
                     options={{
                         headerRight: () => (
                             <View style={styles.about_container}>
-                                <TouchableOpacity style={styles.about_img} onPress={() => alert('This is a button!')}>
-                                    <Image resizeMode={'contain'}  source={require('./img/about.png')}  style={styles.img}/>
-                                </TouchableOpacity>  
+                                <TouchableOpacity style={styles.about_img} onPress={() => setModalVisible(true)}>
+                                    <Image resizeMode={'contain'} accessibilityLabel='about' source={require('./img/about.png')}  style={styles.img}/>
+                                </TouchableOpacity>
+
+                                <View>
+                                    <Modal
+                                        animationType="fade"
+                                        transparent={true}
+                                        visible={modalVisible}
+                                        onRequestClose={() => {
+                                        Alert.alert("Modal has been closed.");
+                                        }}
+                                    >
+                                        <View style={styles.centeredView}>
+                                            <View style={styles.modalView}>
+                                                <View style={styles.multipleText}>
+                                                    
+                                                    <Text accessibilityRole='link' style={styles.modalText} style={{color: 'blue'}}
+                                                        onPress={() => Linking.openURL('http://google.com')}>
+                                                        More info here
+                                                    </Text>
+                                                </View>
+                      
+
+                                                <TouchableHighlight
+                                                    style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                                                    onPress={() => {
+                                                        setModalVisible(!modalVisible);
+                                                    }}
+                                                >
+                                                <Text style={styles.textStyle}>Hide Modal</Text>
+                                                </TouchableHighlight>
+                                            </View>
+                                        </View>
+                                    </Modal>
+                                </View>
                             </View>
                         ),
                     }}
                 />
 
+                
                 <Stack.Screen name="API1" component={API1} />
                 <Stack.Screen name="API2" component={API2} />
                 <Stack.Screen name="API3" component={API3} />
@@ -689,6 +729,46 @@ function App() {
 export default App
 
 const styles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    openButton: {
+        backgroundColor: "#F194FF",
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+    },
+
+
+
     about_container: {
         flex: 1,
         flexDirection: 'row',
