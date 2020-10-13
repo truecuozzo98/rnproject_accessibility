@@ -672,18 +672,25 @@ function App() {
                                         onRequestClose={() => {}}
                                     >
                                         <View style={styles.centeredView}>
+
                                             <View style={styles.modalView}>
-
-                                                <View style={{flexDirection: 'column'}}>
-                                                    <Image accessibilityLabel='EveryWare Lab logo' source={require('./img/EWLab_logo.jpg')} style={styles.logo}/>
-                                                    <Text>Developed by Antonio Pugliese{"\n"}Presso EveryWare Lab</Text>
+                                                <View style={{flexDirection: 'row'}}>
+                                                    <View style={{width: '75%', marginTop: 20}}>
+                                                        <View style={{flexDirection: 'column'}}>
+                                                            <Image accessibilityLabel='EveryWare Lab logo' source={require('./img/EWLab_logo.png')} style={styles.logo}/>
+                                                            <Text>Developed at EveryWare lab (Università degli Studi di Milano) by Antonio Pugliese</Text>
+                                                        </View>
+                                                    </View>
                                                 </View>
-
-                                                <View style={{marginTop: 15}}>
-                                                    <Text accessibilityRole='link' style={styles.modalText} style={{color: 'blue'}}
-                                                        onPress={() => Linking.openURL('https://everywarelab.di.unimi.it/15-research-projects/211-at-in-programming-languages')}>
-                                                        More info here
-                                                    </Text>
+             
+                                                <View style={{flexDirection: 'row'}}>
+                                                    <View style={{width: '75%', marginTop: 20}}>
+                                                        <Button
+                                                            style={{ backgroundColor: "#2196F3", marginTop: 10 }}
+                                                            onPress={() => Linking.openURL('https://everywarelab.di.unimi.it/15-research-projects/211-at-in-programming-languages')}
+                                                            title='view project page'
+                                                        />
+                                                    </View>
                                                 </View>
 
                                                 <View style={{flexDirection: 'row'}}>
@@ -691,7 +698,7 @@ function App() {
                                                         <Button
                                                             style={{ backgroundColor: "#2196F3", marginTop: 10 }}
                                                             onPress={() => { setModalVisible(!modalVisible) }}
-                                                            title='hide'
+                                                            title='close'
                                                         />
                                                     </View>
                                                 </View>
@@ -771,8 +778,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         alignSelf: 'center',
-        width: 100,
-        height: 100,
+        width: 160,
+        height: 120, 
     },
     img_container: {
         flex: 1,
