@@ -14,7 +14,7 @@ import { NativeEventEmitter, NativeModules } from 'react-native';
 
 
 
-function AtShowcase({ navigation }) {
+function ScreenReaderAPI({ navigation }) {
     return (
         <ScrollView>
             <View>
@@ -653,10 +653,10 @@ function App() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="AtShowcase">
+            <Stack.Navigator initialRouteName="ScreenReaderAPI">
                 <Stack.Screen
-                    name="AtShowcase"
-                    component={AtShowcase}
+                    name="ScreenReader API"
+                    component={ScreenReaderAPI}
                     options={{
                         headerRight: () => (
                             <View style={styles.img_container}>
