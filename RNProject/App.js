@@ -830,8 +830,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     fork: {
-        width: 300,
-        height: 300,
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
         alignSelf: 'center',
         marginTop: 20,
