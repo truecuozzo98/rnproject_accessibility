@@ -1,4 +1,4 @@
-package com.rnproject;
+package com.everywarelab.screenreaderapirn;
 
 import com.facebook.react.ReactActivity;
 

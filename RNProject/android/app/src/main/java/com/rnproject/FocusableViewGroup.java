@@ -1,4 +1,4 @@
-package com.rnproject;
+package com.everywarelab.screenreaderapirn;
 
 import android.os.Build;
 import android.widget.LinearLayout;

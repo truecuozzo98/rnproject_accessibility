@@ -1,4 +1,4 @@
-package com.rnproject;
+package com.everywarelab.screenreaderapirn;
 
 import java.util.Map;
 

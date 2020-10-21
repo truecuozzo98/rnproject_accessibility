@@ -1,4 +1,4 @@
-package com.rnproject;
+package com.everywarelab.screenreaderapirn;
 
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
